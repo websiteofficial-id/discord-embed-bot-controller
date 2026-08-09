@@ -1,1 +1,29 @@
-
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Discord Embed Controller</title><link rel="stylesheet" href="style.css">
+</head>
+<body><div class="wrap">
+<h1>Discord Embed Controller</h1><p>Cloud Edition — HP hanya menjadi controller.</p>
+<div class="grid"><section class="card">
+<h2>Controller</h2>
+<label>Controller Key</label><input id="key" type="password" placeholder="Controller key">
+<label>Channel ID</label><input id="channel" placeholder="123456789012345678">
+<label>Message</label><textarea id="content" placeholder="Pesan di luar embed (opsional)"></textarea>
+<h2>Embed</h2>
+<label>Title</label><input id="title" placeholder="Judul">
+<label>Description</label><textarea id="description" placeholder="Isi embed"></textarea>
+<label>Color</label><div class="color"><input id="color" type="color" value="#5865F2"><input id="colorText" value="#5865F2"></div>
+<label>URL</label><input id="url" placeholder="https://example.com">
+<label>Thumbnail URL</label><input id="thumbnail" placeholder="https://...">
+<label>Image URL</label><input id="image" placeholder="https://...">
+<label>Footer</label><input id="footer" placeholder="Footer">
+<label class="check"><input id="timestamp" type="checkbox"> Tambahkan timestamp</label>
+<button id="send">Kirim ke Discord</button><button id="status">Cek Status Bot</button>
+<div id="result"></div></section>
+<section class="card"><h2>Preview</h2>
+<div class="discord"><div class="user"><span class="avatar">B</span><b>Embed Bot</b><span class="tag">BOT</span></div>
+<div id="embed" class="embed"><h3 id="ptitle">Judul Embed</h3><p id="pdesc">Description embed akan tampil di sini.</p><img id="pimage" hidden><small id="pfooter">Footer</small></div>
+</div></section></div></div>
+<script src="script.js"></script></body></html>
