@@ -1,0 +1,12 @@
+{
+  "name": "discord-embed-cloud-controller",
+  "version": "1.0.0",
+  "private": true,
+  "main": "server.js",
+  "scripts": {"start": "node server.js"},
+  "engines": {"node": ">=18"},
+  "dependencies": {
+    "discord.js": "^14.21.0",
+    "express": "^5.1.0"
+  }
+}
