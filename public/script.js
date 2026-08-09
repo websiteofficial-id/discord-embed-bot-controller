@@ -1,0 +1,9 @@
+const $=id=>document.getElementById(id);
+function preview(){ $("ptitle").textContent=$("title").value||"Judul Embed"; $("pdesc").textContent=$("description").value||"Description embed akan tampil di sini."; $("embed").style.borderLeftColor=$("color").value; $("pfooter").textContent=$("footer").value||"Footer"; if($("image").value){$("pimage").src=$("image").value;$("pimage").hidden=false}else $("pimage").hidden=true; }
+["title","description","color","image","footer"].forEach(id=>$(id).addEventListener("input",preview));
+$("color").oninput=()=>{$("colorText").value=$("color").value;preview()};
+$("colorText").oninput=()=>{if(/^#[0-9a-f]{6}$/i.test($("colorText").value)){$("color").value=$("colorText").value;preview()}};
+const headers=()=>({"Content-Type":"application/json","x-controller-key":$("key").value});
+$("send").onclick=async()=>{try{const d={channelId:$("channel").value,content:$("content").value,title:$("title").value,description:$("description").value,color:$("color").value,url:$("url").value,thumbnail:$("thumbnail").value,image:$("image").value,footer:$("footer").value,timestamp:$("timestamp").checked};const r=await fetch("/api/send-embed",{method:"POST",headers:headers(),body:JSON.stringify(d)}),j=await r.json();if(!r.ok)throw Error(j.message);$("result").className="ok";$("result").textContent="Berhasil dikirim. Message ID: "+j.messageId}catch(e){$("result").className="err";$("result").textContent=e.message}};
+$("status").onclick=async()=>{try{const r=await fetch("/api/status",{headers:headers()}),j=await r.json();if(!r.ok)throw Error(j.message);$("result").className="ok";$("result").textContent=j.online?"Bot ONLINE: "+j.bot:"Bot belum online."}catch(e){$("result").className="err";$("result").textContent=e.message}};
+preview();
